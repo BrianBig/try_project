@@ -6,12 +6,16 @@ const port = 3000;
 // Middleware para interpretar JSON en el cuerpo de las solicitudes
 app.use(express.json());
 
-app.use(express.static('public'));
-
+// Configuración de las rutas
 app.use('/', datosRoutes);
 
+// Configuración de archivos estáticos
+app.use(express.static('public'));
 app.use('/static', express.static('static'));
 
+// Iniciar el servidor
 app.listen(port, () => {
-    console.log('Servidor corriendo en http://localhost:3000');
+    console.log(`Servidor corriendo en http://localhost:${port}`);
 });
+
+module.exports = app;
