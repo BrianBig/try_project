@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>CRUD AngularJS</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+    <!-- AngularJS -->
+    <script src="/static/angular.min.js"></script>
+    <script src="/static/script.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="MainController">
+    <header>
+        <h1>CRUD Programas</h1>
+    </header>
+    <main class="container">
+        <!-- create/edit program -->
+        <form ng-submit="createProgram()">
+            <div class="mb-3">
+                <label for="nombre_programa" class="form-label">Nombre del Programa</label>
+                <input type="text" class="form-control" id="nombre_programa" ng-model="formData.nombre_programa" required>
+            </div>
+            <div class="mb-3">
+                <label for="estado" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="estado" ng-model="formData.estado" required>
+            </div>
+            <div class="mb-3">
+                <label for="id_user" class="form-label">ID Usuario</label>
+                <input type="number" class="form-control" id="id_user" ng-model="formData.id_user" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Programa</button>
+        </form>
+
+        <!-- program table -->
+        <h2>Listado de Programas</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID Programa</th>
+                    <th>Nombre Programa</th>
+                    <th>Estado</th>
+                    <th>ID Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="programa in programas">
+                    <td>{{ programa.id_programa }}</td>
+                    <td>{{ programa.nombre_programa }}</td>
+                    <td>{{ programa.estado }}</td>
+                    <td>{{ programa.id_user }}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="updateProgram(programa.id_programa)">Editar</button>
+                        <button class="btn btn-danger" ng-click="deleteProgram(programa.id_programa)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
