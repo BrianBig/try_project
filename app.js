@@ -10,8 +10,9 @@ app.use('/', datosRoutes);
 app.use(express.static('public'));
 app.use('/static', express.static('static'));
 
-app.listen(port, () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`);
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor corriendo en http://0.0.0.0:${PORT}`);
 });
+
 
 module.exports = app;
